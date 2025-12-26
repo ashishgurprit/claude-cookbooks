@@ -81,7 +81,7 @@ Use this to ensure comprehensive coverage:
 - [ ] Lists required knowledge clearly
 - [ ] Lists required tools (Python version, API keys)
 - [ ] Mentions recommended background if applicable
-- [ ] Uses %%capture for pip install to suppress output
+- [ ] Uses -q flag for pip install to suppress output (e.g., `pip install -q`)
 - [ ] Uses dotenv.load_dotenv() not os.environ
 - [ ] Defines MODEL constant at top
 - [ ] Groups related installs in single command
@@ -108,7 +108,7 @@ Use this to ensure comprehensive coverage:
 - [ ] Model name defined as constant at top of notebook
 
 **Output Management**
-- [ ] pip install logs suppressed with %%capture
+- [ ] pip install logs suppressed with -q flag
 - [ ] No verbose debug output
 - [ ] Shows relevant API responses
 - [ ] Stack traces only when demonstrating error handling
@@ -123,7 +123,7 @@ Use this to ensure comprehensive coverage:
 **Technical Requirements**
 - [ ] Executable without modification (except API keys)
 - [ ] Uses non-deprecated API patterns
-- [ ] Uses valid model names (claude-sonnet-4-5, claude-haiku-4-5, claude-opus-4-5)
+- [ ] Uses valid model names with date suffixes (claude-sonnet-4-5-20250929, claude-haiku-4-5-20251001, claude-opus-4-5-20251101)
 - [ ] Model name defined as constant at top of notebook
 - [ ] Includes dependency specifications
 - [ ] Assigned to primary category
@@ -177,8 +177,8 @@ Cookbooks are not production-ready code: They showcase use cases and capabilitie
 - **Good habits**: Use `dotenv.load_dotenv()` instead of `os.environ`
 
 #### Output Handling
-**Remove extraneous output** with %%capture:
-- pip install logs (always suppress these)
+**Remove extraneous output** with `-q` flag:
+- pip install logs (always suppress with `pip install -q`)
 - Verbose debug statements
 - Lengthy stack traces (unless demonstrating error handling)
 
@@ -209,7 +209,7 @@ Must include:
 - **Required Tools**: Python version, API keys with links
 - **Recommended**: Optional background that helps
 - **Setup**: Step-by-step with explanations
-  - Use `%%capture` for pip installs
+  - Use `-q` flag for pip installs (e.g., `pip install -q`)
   - Use `dotenv.load_dotenv()` not `os.environ`
   - Define `MODEL` constant at top
 
@@ -252,7 +252,7 @@ Refer to style_guide.md for detailed good/bad examples. Watch for these issues:
 ✅ Problem-first framing with specific, actionable learning objectives
 
 #### Setup Anti-Patterns
-❌ Noisy pip install output without `%%capture`
+❌ Noisy pip install output without `-q` flag
 ❌ Multiple separate pip install commands
 ❌ Using `os.environ["API_KEY"] = "your_key"` instead of dotenv
 ❌ Hardcoding model names throughout instead of using a MODEL constant

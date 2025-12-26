@@ -219,18 +219,18 @@ class NotebookValidator:
             self.warnings.append("Introduction doesn't mention prerequisites")
 
     def check_pip_install_output(self):
-        """Check that pip install outputs are suppressed."""
+        """Check that pip install outputs are suppressed with -q flag."""
         for i, cell in enumerate(self.cells):
             if cell.get("cell_type") != "code":
                 continue
 
             source = self.get_cell_source(cell)
             has_pip_install = "pip install" in source
-            has_capture = "%%capture" in source or "%pip install" in source
+            has_quiet = "-q" in source or "--quiet" in source
 
-            if has_pip_install and not has_capture:
+            if has_pip_install and not has_quiet:
                 self.warnings.append(
-                    f"Cell {i}: pip install without output suppression (use %%capture or %pip)"
+                    f"Cell {i}: pip install without -q flag (use 'pip install -q' for quiet output)"
                 )
 
     def check_code_explanations(self):
@@ -321,13 +321,17 @@ class NotebookValidator:
             if has_model_refs:
                 self.warnings.append(
                     "Model name should be defined as a constant at the top of the notebook "
-                    "(e.g., MODEL = 'claude-sonnet-4-5') to make future updates easier"
+                    "(e.g., MODEL = 'claude-sonnet-4-5-20250929') to make future updates easier"
                 )
 
     def check_deprecated_patterns(self):
         """Check for deprecated API patterns and invalid models."""
-        # Valid models
-        valid_models = ["claude-sonnet-4-5", "claude-haiku-4-5", "claude-opus-4-5"]
+        # Valid models (with date suffixes)
+        valid_models = [
+            "claude-sonnet-4-5-20250929",
+            "claude-haiku-4-5-20251001",
+            "claude-opus-4-5-20251101",
+        ]
 
         # Pattern to match model strings
         model_pattern = r'["\']claude-([a-z0-9\.-]+)["\']'

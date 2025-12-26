@@ -27,7 +27,7 @@ from claude_agent_sdk import ClaudeAgentOptions, ClaudeSDKClient
 load_dotenv()
 
 # Default model for the research agent
-DEFAULT_MODEL = "claude-opus-4-5"
+DEFAULT_MODEL = "claude-opus-4-5-20251101"
 
 # System prompt with citation requirements for research quality
 RESEARCH_SYSTEM_PROMPT = """You are a research agent specialized in AI.

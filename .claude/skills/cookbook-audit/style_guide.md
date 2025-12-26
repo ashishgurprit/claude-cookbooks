@@ -47,7 +47,7 @@ You will learn how to:
 # 2. Prerequisites & Setup
 Setup the general requirements for this project that a user would need in order to be successful. These are both software requirements (e.g. python >= 3.11, anthropic>=0.71) and non-software (working knowledge of Python, familiarity with RAG architecture). 
 
-When installing use pip, use %%capture to avoid printing pip install to the jupyter stdout (this can be very noisy).
+When installing packages with pip, use the `-q` (quiet) flag to suppress verbose output (e.g., `%pip install -q anthropic`).
 
 ```markdown
 ## Prerequisites
@@ -65,10 +65,9 @@ Before following this guide, ensure you have the following:
 
 Good:
 ```markdown
-%%capture
-%pip install -U anthropic scikit-learn voyageai
+%pip install -q -U anthropic scikit-learn voyageai
 
---- 
+---
 
 import anthropic
 import dotenv
@@ -76,8 +75,8 @@ import dotenv
 # Teaches good habits
 dotenv.load_dotenv()
 
-# constant model name is easier to change 
-MODEL = "claude-haiku-4-5"
+# constant model name is easier to change
+MODEL = "claude-haiku-4-5-20251001"
 
 client = anthropic.Anthropic()
 ```
@@ -125,8 +124,7 @@ Before following this guide, ensure you have:
 First, install the required dependencies:
 
 ~~~python
-%%capture
-%pip install -U anthropic scikit-learn numpy python-dotenv
+%pip install -q -U anthropic scikit-learn numpy python-dotenv
 ~~~
 
 
@@ -142,7 +140,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-MODEL = "claude-sonnet-4-5"
+MODEL = "claude-sonnet-4-5-20250929"
 
 client = anthropic.Anthropic()
 ~~~

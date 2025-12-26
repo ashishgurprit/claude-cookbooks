@@ -28,7 +28,7 @@ from claude_agent_sdk import ClaudeAgentOptions, ClaudeSDKClient, McpServerConfi
 load_dotenv()
 
 # Default model for the observability agent
-DEFAULT_MODEL = "claude-opus-4-5"
+DEFAULT_MODEL = "claude-opus-4-5-20251101"
 
 # System prompt optimized for observability tasks
 DEFAULT_SYSTEM_PROMPT = """You are an observability agent specialized in monitoring \

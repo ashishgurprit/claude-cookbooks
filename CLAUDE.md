@@ -70,6 +70,8 @@ style: lint/format
    - Keep outputs in notebooks (intentional for demonstration)
    - One concept per notebook
    - Test that notebooks run top-to-bottom without errors
+   - Use `pip install -q` (quiet flag) instead of `%%capture` for package installations
+   - Example: `!pip install -q anthropic` or `%pip install -q anthropic`
 
 5. **Quality checks:** Run `make check` before committing. Pre-commit hooks validate formatting and notebook structure.
 

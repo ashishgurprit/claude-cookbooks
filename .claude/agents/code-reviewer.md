@@ -27,8 +27,8 @@ Unless otherwise specified, run `git diff` to see what has changed and focus on 
   - Optional: mentions broader applications
 
 - **Prerequisites & Setup**:
-  - Uses `%%capture` or `pip -q` for pip install commands to suppress noisy output
-  - Groups related packages in single pip install command (e.g., `%pip install -U anthropic scikit-learn voyageai`)
+  - Uses `-q` flag for pip install commands to suppress noisy output (e.g., `%pip install -q anthropic`)
+  - Groups related packages in single pip install command (e.g., `%pip install -q -U anthropic scikit-learn voyageai`)
   - Uses `dotenv.load_dotenv()` NOT `os.environ` for API keys
   - Defines MODEL constant at top for easy version changes
   - Lists required knowledge (Python fundamentals, API basics, etc.)
@@ -200,6 +200,6 @@ Be specific with file and line references (e.g., `file_path:line_number`). Provi
 [SUGGESTION] Group pip install commands
 - File: `multimodal/guide.ipynb:5-10`
 - Current: Multiple separate `%pip install` commands
-- Better: `%%capture\n%pip install -U anthropic pillow opencv-python`
+- Better: `%pip install -q -U anthropic pillow opencv-python`
 - Benefit: Cleaner output, faster installation, follows project convention
 ```
